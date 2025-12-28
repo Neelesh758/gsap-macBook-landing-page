@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =======================
+   Fonts
+======================= */
+@font-face {
+  font-family: "Regular";
+  src: url("/fonts/regular.otf");
+}
+@font-face {
+  font-family: "Medium";
+  src: url("/fonts/medium.otf");
+}
+@font-face {
+  font-family: "SemiBold";
+  src: url("/fonts/semibold.otf");
+}
+@font-face {
+  font-family: "Bold";
+  src: url("/fonts/bold.otf");
+}
+
+/* =======================
+   CSS Variables
+======================= */
+:root {
+  --color-primary: #0071e3;
+  --color-dark-100: #86868b;
+  --color-dark-200: #2e2e30;
+  --color-light-100: #adb5bd;
+
+  --gradient-color: linear-gradient(
+    to bottom right,
+    #0894ff 0%,
+    #c959dd 34%,
+    #ff2e54 68%,
+    #ff9004
+  );
+}
+
+/* =======================
+   Global styles
+======================= */
+* {
+  scrollbar-color: var(--color-dark-100) #000;
+}
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #000;
+  color: var(--color-dark-100);
+  font-family: "SemiBold";
+}
+
+/* =======================
+   CUSTOM UTILITIES
+======================= */
+@layer utilities {
+  /* layout */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  /* typography helpers */
+  .h3-semibold {
+    @apply font-semibold text-xl;
+    color: var(--color-dark-100);
+  }
+  .base-semibold {
+    @apply font-semibold text-base;
+    color: var(--color-dark-100);
+  }
+  .small-medium {
+    @apply font-medium text-xs;
+  }
+
+  /* font families */
+  .font-regular {
+    font-family: "Regular";
+  }
+  .font-medium {
+    font-family: "Medium";
+  }
+  .font-semibold {
+    font-family: "SemiBold";
+  }
+  .font-bold {
+    font-family: "Bold";
+  }
+
+  /* colors */
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-dark-100 {
+    color: var(--color-dark-100);
+  }
+  .ring-light-100 {
+    --tw-ring-color: var(--color-light-100);
+  }
+}
+
+/* =======================
+   COMPONENTS
+======================= */
+@layer components {
+  header {
+    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh];
+
+    nav {
+      @apply container mx-auto flex-between px-5 2xl:px-0;
+
+      img {
+        @apply cursor-pointer hover:-translate-y-0.5 transition-all duration-300;
+      }
+
+      ul {
+        @apply flex-center gap-8;
+
+        a {
+          @apply hidden md:block text-white opacity-80 font-regular text-sm cursor-pointer hover:opacity-100 transition-all;
+        }
+      }
+    }
+  }
+
+  #hero {
+    @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20;
+
+    h1 {
+      @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
+    }
+
+    button {
+      @apply bg-primary text-white py-2 px-6 rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all;
+    }
+
+    p {
+      @apply h3-semibold;
+    }
+  }
+
+  footer {
+    @apply container mx-auto py-7 max-lg:px-5;
+
+    .info {
+      @apply flex-between;
+
+      span {
+        @apply text-primary;
+      }
+    }
+  }
+}
